@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
                 }
         }
         playerController.Move((newXPosition-transform.position.x) * Vector3.right);
+        Move();
     }
 
     private void Move()
