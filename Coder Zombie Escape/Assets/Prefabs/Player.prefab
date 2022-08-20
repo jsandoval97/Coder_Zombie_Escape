@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 3111822235261823236}
   - component: {fileID: 3111822235261823232}
   - component: {fileID: 3111822235261823233}
+  - component: {fileID: 2034846280}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -218,6 +219,7 @@ MonoBehaviour:
   xValue: 2
   GoLeft: 0
   GoRight: 0
+  playerAnimator: {fileID: 0}
 --- !u!143 &3111822235261823233
 CharacterController:
   m_ObjectHideFlags: 0
@@ -236,6 +238,26 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2034846280
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111822235261823353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+  m_Controller: {fileID: 9100000, guid: 3f1273f09ddd3db4a970dcc7264c9a6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3111822235262434659
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +356,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3f1273f09ddd3db4a970dcc7264c9a6e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
 --- !u!4 &2399868230072054344 stripped

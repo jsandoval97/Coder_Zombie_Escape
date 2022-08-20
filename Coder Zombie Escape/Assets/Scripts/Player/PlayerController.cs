@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public bool GoRight; 
     //creo un CharacterController para mover al player 
     private CharacterController playerController;
+    //creo un AnimatorController para animar al player
+    [SerializeField] Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         //obtengo el componente CharacterController
         playerController = GetComponent<CharacterController>();
         //transform.position = Vector3.zero;
+
     }
 
     // Update is called once per frame
@@ -52,14 +55,17 @@ public class PlayerController : MonoBehaviour
             {
                 newXPosition = xValue;
                 pSide = Side.Right;
+                
             }   else if(pSide == Side.Left)
                 {
                     newXPosition = 0;
                     pSide = Side.Mid;
+                    
                 }
         }
         playerController.Move((newXPosition-transform.position.x) * Vector3.right);
         Move();
+        //falta el jump y el roll
     }
 
     private void Move()
