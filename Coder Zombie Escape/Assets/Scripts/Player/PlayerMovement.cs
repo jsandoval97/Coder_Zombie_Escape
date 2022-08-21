@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float speed = 2f;
     //defino los carriles 
@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     //creo las variables para ingresar el movimiento izquierda y derecha
     public bool GoLeft;
     public bool GoRight; 
+    //variables para el salto
+    
     //creo un CharacterController para mover al player 
     private CharacterController playerController;
     //creo un AnimatorController para animar al player
