@@ -1,5 +1,6 @@
 Team: 
         - Julia Sandoval Lescout
+        - Leandro Cancelas 
 
 Tools:
 
