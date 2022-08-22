@@ -13,13 +13,15 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i=0; i< tilesNumber; i++)
+        for (int i = 0; i < tilesNumber; i++)
         {
-            if (i==0)
+            if (i == 0)
             {
                 SpawnTile(0);
-            }else{
-                 SpawnTile(Random.Range(1, tilePrefabs.Length));
+            }
+            else
+            {
+                SpawnTile(Random.Range(1, tilePrefabs.Length));
             }
         }
     }
@@ -27,7 +29,7 @@ public class TileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void SpawnTile(int tileIndex)

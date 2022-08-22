@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+
+    private PlayerMoveForce playerMove;
+
+        private void Start()
+    {
+        playerMove = GetComponent<PlayerMoveForce>();
+    }
+    
     private void OnCollisionEnter(Collision other)
     {
-        
-        if(other.gameObject.CompareTag("Obstacle"))
+
+        if (other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log ("Zombie aparece");
+            Debug.Log("Zombie aparece");
         }
-        else 
+        else
         {
             Debug.Log("Entrando en colisión con -> " + other.gameObject.name);
         }
