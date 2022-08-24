@@ -98,7 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae851fb3096695468f55b691f18a2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  speed: 2
+  zombieType: 0
+  playerTransform: {fileID: 3111822235261823235, guid: 0a450d0cd27366e4e845f8990110f5b5, type: 3}
 --- !u!1001 &6624270995459029683
 PrefabInstance:
   m_ObjectHideFlags: 0

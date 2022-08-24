@@ -6,57 +6,32 @@ public class PlayerMoveForce : MonoBehaviour
 {
 
     [SerializeField]
-    private int jumpForce = 40;
+    private float jumpHeight = 4f;
+
+    //[SerializeField]
+    //private bool isGrounded;
 
     [SerializeField]
-    [Range(1f, 20f)]
-    private int delayNextJump = 1;
-
-    [SerializeField]
-    private Animator playerAnimator;
-
-
-    public bool CanJump { get => canJump; set => canJump = value; }
-    public Rigidbody MyRigidbody { get => myRigidbody; set => myRigidbody = value; }
-
-
-    private bool canJump = true;
-    private bool inDelayJump = false;
-    private Vector3 playerDirection;
-    private Rigidbody myRigidbody;
+    Rigidbody MyRigidBody;
 
     void Start()
     {
-        MyRigidbody = GetComponent<Rigidbody>();
+        MyRigidBody = GetComponent<Rigidbody>();
+       // isGrounded = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            MyRigidbody.AddForce((Vector3.up + Vector3.forward), ForceMode.VelocityChange);
-            canJump = false;
+            jump();
         }
     }
 
-    private void FixedUpdate()
+    private void jump()
     {
-
-        if (!canJump && !inDelayJump)
-        {
-
-            MyRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            inDelayJump = true;
-            Invoke("DelayNextJump", delayNextJump);
-        }
-
-    }
-
-    private void DelayNextJump()
-    {
-        inDelayJump = false;
-        canJump = true;
+        MyRigidBody.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
     }
 
 }

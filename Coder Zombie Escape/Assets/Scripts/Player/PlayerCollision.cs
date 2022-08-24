@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
 
-    private PlayerMoveForce playerMove;
+    private PlayerData playerData;
 
-        private void Start()
+
+    // Start is called before the first frame update
+    private void Start()
     {
-        playerMove = GetComponent<PlayerMoveForce>();
+        playerData = GetComponent<PlayerData>();
     }
-    
+
+
+
     private void OnCollisionEnter(Collision other)
     {
 
@@ -19,10 +23,18 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("Zombie aparece");
         }
+
         else
         {
             Debug.Log("Entrando en colisión con -> " + other.gameObject.name);
         }
 
+        if (other.gameObject.CompareTag("Points"))
+        {
+            Destroy(other.gameObject);
+            playerData.Punctuation(other.gameObject.GetComponent<Points>().urnPoints);
+        }
+
     }
+
 }

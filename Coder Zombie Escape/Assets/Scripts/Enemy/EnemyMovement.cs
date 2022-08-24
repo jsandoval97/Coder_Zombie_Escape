@@ -6,7 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
 
     [SerializeField]
-    private int Speed = 2;
+    [Range(1f, 10f)]
+    private float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,6 @@ public class EnemyMovement : MonoBehaviour
 
         private void Move()
     {
-        transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }

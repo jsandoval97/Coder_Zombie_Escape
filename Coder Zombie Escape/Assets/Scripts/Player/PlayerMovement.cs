@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public bool GoRight;
 
     //variables para el salto
-    
 
     //creo un CharacterController para mover al player 
     private CharacterController playerController;
@@ -83,11 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
         playerController.Move((newXPosition - transform.position.x) * Vector3.right);
         Move();
-
-        //Defino el salto
         
-
-        //falta el roll
+        //falta el jump y el roll
 
     }
 
@@ -95,6 +90,4 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
-
-    
 }

@@ -9,7 +9,6 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField]
     private int delaySpawn = 2;
 
-
     // Start is called before the first frame update
     void Start()
     {
