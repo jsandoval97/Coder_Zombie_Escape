@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     enum ZombieTypes { Crawler, Stalker, Rioter };
     [SerializeField] ZombieTypes zombieType;
     [SerializeField] Transform playerTransform;
-    [SerializeField] Animator zombieAnimator;
 
     void Start()
     {

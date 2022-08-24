@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7663838012037114799}
   - component: {fileID: 3016183696033387365}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ Animator:
   m_GameObject: {fileID: 6775582788800380361}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
-  m_Controller: {fileID: 9100000, guid: 3f1273f09ddd3db4a970dcc7264c9a6e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 62f35a2963251574881d55650d24844a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6775582788800380361}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bae851fb3096695468f55b691f18a2cf, type: 3}
   m_Name: 
@@ -107,13 +107,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6775582788800380361}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e944c6a1ec1749d46b27058aec310e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  zombieType: 1
+  zombieType: 0
   playerTransform: {fileID: 0}
 --- !u!1001 &6624270995459029683
 PrefabInstance:
@@ -173,7 +173,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: f0a4a76667f3c6c4c9815a88f285b52b, type: 2}
+      objectReference: {fileID: 9100000, guid: 62f35a2963251574881d55650d24844a, type: 2}
     - target: {fileID: 13700000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
