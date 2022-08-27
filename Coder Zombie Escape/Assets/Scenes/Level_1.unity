@@ -1285,7 +1285,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66903212}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2ef0c9fe72a3c04b9364f327d9cfe5d, type: 3}
   m_Name: 
@@ -1294,10 +1294,8 @@ MonoBehaviour:
   MaxLeft: -2
   MaxRight: 2
   jumpCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 0
+    - time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -1305,8 +1303,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.49583435
+    - time: 0.49583435
       value: 1.0047168
       inSlope: 0
       outSlope: 0
@@ -1314,8 +1311,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.98749995
+    - time: 0.98749995
       value: 0.007075472
       inSlope: 0
       outSlope: 0
@@ -1326,9 +1322,29 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  Jumping: 0
   JumpScale: 5
   JumpDuration: 3
   Speed: 4
+  yOriginal: 0
+  yOffset: 0
+  tr: {fileID: 0}
+--- !u!114 &1805375321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66903212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5164469f8454eb74f9351f5490ce1c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 5
+  laneDistance: 2
+  jumpForce: 10
+  Gravity: -20
 --- !u!1001 &1854483010
 PrefabInstance:
   m_ObjectHideFlags: 0
