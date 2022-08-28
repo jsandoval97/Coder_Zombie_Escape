@@ -198,10 +198,9 @@ GameObject:
   - component: {fileID: 3111822235261823233}
   - component: {fileID: 2034846280}
   - component: {fileID: 1192041917503467058}
-  - component: {fileID: 3353980111234216552}
-  - component: {fileID: 8083672774157116552}
   - component: {fileID: 4214597461565791850}
   - component: {fileID: 1805375310}
+  - component: {fileID: 1805375321}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -346,38 +345,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &3353980111234216552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111822235261823353}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b35663def644d054990263c14d49965b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  pSide: 1
-  xValue: 2
-  GoLeft: 0
-  GoRight: 0
-  playerAnimator: {fileID: 0}
---- !u!114 &8083672774157116552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111822235261823353}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8e5f87778eb80b4c8ceeab09e7cad33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpHeight: 10
-  MyRigidBody: {fileID: 1192041917503467058}
 --- !u!114 &4214597461565791850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +370,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coins: 0
+--- !u!114 &1805375321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111822235261823353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5164469f8454eb74f9351f5490ce1c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 5
+  laneDistance: 2
+  jumpForce: 10
+  Gravity: -10
+  playerAnimator: {fileID: 2399868230079765928}
 --- !u!1 &3111822235262434659
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,5 +525,10 @@ PrefabInstance:
 --- !u!4 &2399868230072054344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+  m_PrefabInstance: {fileID: 2399868230072445128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2399868230079765928 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
   m_PrefabInstance: {fileID: 2399868230072445128}
   m_PrefabAsset: {fileID: 0}

@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,16 @@ using UnityEngine;
 public class PlayerMovementV3 : MonoBehaviour
 {
     private CharacterController controller;
-    private Vector3 direction;
-    public float forwardSpeed;
+    private Vector3 move;
+    public float forwardSpeed = 5f;
 
     private int desiredLane = 1; //0 es izquierda, 1 es medio, 2 es derecha
     public float laneDistance = 2; //distancia entre líneas
 
     public float jumpForce;
     public float Gravity = -20;
+
+    [SerializeField] Animator playerAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +25,9 @@ public class PlayerMovementV3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction.z = forwardSpeed; 
+        move.z = forwardSpeed; 
 
-        direction.y += Gravity * Time.deltaTime;
+        move.y += Gravity * Time.deltaTime;
 
         if(controller.isGrounded)
         {
@@ -36,6 +39,7 @@ public class PlayerMovementV3 : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+
             desiredLane++;
             if(desiredLane == 3)
             {
@@ -53,25 +57,32 @@ public class PlayerMovementV3 : MonoBehaviour
         }
 
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
-
         if (desiredLane == 0)
-        {
             targetPosition += Vector3.left * laneDistance;
-        } else if (desiredLane == 2)
-        {
+        else if (desiredLane == 2)
             targetPosition += Vector3.right * laneDistance;
+
+        //transform.position = targetPosition;
+        if (transform.position != targetPosition)
+        {
+            Vector3 diff = targetPosition - transform.position;
+            Vector3 moveDir = diff.normalized * 30 * Time.deltaTime;
+            if (moveDir.sqrMagnitude < diff.magnitude)
+                controller.Move(moveDir);
+            else
+                controller.Move(diff);
         }
 
-        transform.position = targetPosition;
+        controller.Move(move * Time.deltaTime);
     }
 
-    private void FixedUpdate() 
+    /*private void FixedUpdate() 
     {
         controller.Move(direction * Time.fixedDeltaTime);
-    }
+    }*/
 
     private void Jump()
     {
-        direction.y = jumpForce;
+        move.y = jumpForce;
     }
 }
