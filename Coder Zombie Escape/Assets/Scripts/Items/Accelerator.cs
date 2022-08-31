@@ -31,12 +31,12 @@ public class Accelerator : MonoBehaviour
 
     private void NormalSpeed(Collider other)
     {
-        other.GetComponent<PlayerMovementV3>().forwardSpeed /= SpeedUp;
+        other.GetComponent<PlayerMovement>().speed /= SpeedUp;
     }
 
     private void Run(Collider other)
     {
-        other.GetComponent<PlayerMovementV3>().forwardSpeed *= SpeedUp;
+        other.GetComponent<PlayerMovement>().speed *= SpeedUp;
     }
 
     private void ResetSpeed()

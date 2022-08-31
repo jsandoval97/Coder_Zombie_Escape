@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,9 @@ public class PlayerCollision : MonoBehaviour
         {
             Destroy(other.gameObject);
             playerData.Punctuation(other.gameObject.GetComponent<Points>().urnPoints);
+
+            GameManager.score++;
+            Debug.Log(GameManager.score);
         }
 
     }
