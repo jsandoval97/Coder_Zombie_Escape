@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
 
-    public static HUDManager instance;
+    private static HUDManager instance;
+    public static HUDManager Instance { get => instance; }
 
-    [SerializeField]
-    private Text selectedText;
+   [SerializeField] private Slider progressBar;
 
     void Awake()
     {
@@ -35,10 +35,10 @@ public class HUDManager : MonoBehaviour
 
     }
 
-
-
-    public void SetSelectedText(string newText)
+    public static void SetProgressBar(int newValue)
     {
-        selectedText.text = newText;
+        instance.progressBar.value = newValue;
     }
+
+
 }

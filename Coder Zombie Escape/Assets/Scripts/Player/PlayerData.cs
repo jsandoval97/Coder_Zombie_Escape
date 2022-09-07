@@ -9,9 +9,18 @@ public class PlayerData : MonoBehaviour
 
     public int Points { get { return Coins; } }
 
+    private int position = 0;
+    public int Position { get { return position; } }
+
     public void Punctuation(int value)
     {
         Coins += value;
     }
+
+    public void Progress(int value)
+    {
+        position += value;
+    }
+
 }
 

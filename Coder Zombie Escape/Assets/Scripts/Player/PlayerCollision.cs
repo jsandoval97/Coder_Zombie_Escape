@@ -39,6 +39,17 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log(GameManager.score);
         }
 
+        
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("CheckPoint"))
+        {
+            playerData.Progress(other.gameObject.GetComponent<CheckPoint>().checkPoint);
+            HUDManager.SetProgressBar(playerData.Position);
+        }
     }
 
 }
