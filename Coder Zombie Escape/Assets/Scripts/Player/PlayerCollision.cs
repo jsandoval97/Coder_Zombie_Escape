@@ -19,10 +19,10 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-
         if (other.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("Zombie aparece");
+            HUDManager.Instance.RestarVida();
         }
 
         else
@@ -30,16 +30,6 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Entrando en colisión con -> " + other.gameObject.name);
         }
 
-        if (other.gameObject.CompareTag("Points"))
-        {
-            Destroy(other.gameObject);
-            playerData.Punctuation(other.gameObject.GetComponent<Points>().urnPoints);
-
-            GameManager.score++;
-            Debug.Log(GameManager.score);
-        }
-
-        
 
     }
 
@@ -49,7 +39,21 @@ public class PlayerCollision : MonoBehaviour
         {
             playerData.Progress(other.gameObject.GetComponent<CheckPoint>().checkPoint);
             HUDManager.SetProgressBar(playerData.Position);
+
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Points"))
+        {
+            Destroy(other.gameObject);
+            playerData.Punctuation(other.gameObject.GetComponent<Points>().urnPoints);
+
+            GameManager.score++;
+            Debug.Log(GameManager.score);
+            HUDManager.Instance.AddPoint();
+        }
+    }
+    
 }

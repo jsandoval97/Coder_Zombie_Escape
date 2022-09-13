@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3111822233537694228}
   m_Layer: 0
   m_Name: Avatar
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,11 +184,10 @@ GameObject:
   - component: {fileID: 2034846280}
   - component: {fileID: 4214597461565791850}
   - component: {fileID: 1805375310}
-  - component: {fileID: 1805375321}
   - component: {fileID: 8842854603907168469}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,7 +322,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3111822235261823353}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b4332dc58725bc4ca520b741ea1db86, type: 3}
   m_Name: 
@@ -341,23 +340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coins: 0
---- !u!114 &1805375321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3111822235261823353}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5164469f8454eb74f9351f5490ce1c3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forwardSpeed: 5
-  laneDistance: 2
-  jumpForce: 10
-  Gravity: -10
-  playerAnimator: {fileID: 2399868230079765928}
 --- !u!114 &8842854603907168469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,9 +352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eaf5b2ea4be4774193d993d557b678e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMove: 20
-  verticalPosition: 0
+  speedMove: 10
   gravity: 20
+  leftLanePos: -2
+  rightLanePos: 2
 --- !u!1 &3111822235262434659
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,10 +494,5 @@ PrefabInstance:
 --- !u!4 &2399868230072054344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
-  m_PrefabInstance: {fileID: 2399868230072445128}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2399868230079765928 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
   m_PrefabInstance: {fileID: 2399868230072445128}
   m_PrefabAsset: {fileID: 0}
