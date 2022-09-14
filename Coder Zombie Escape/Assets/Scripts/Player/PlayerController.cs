@@ -14,15 +14,24 @@ public enum DirectionInput
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speedMove;
+    [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float gravity = 20f;
     [SerializeField] private float leftLanePos = -2f;
     [SerializeField] private float rightLanePos = 2f;
 
+    public bool isJumping {get; private set;}
+    public bool isSliding {get; private set;}
+
     private DirectionInput directionInput;
+    private Coroutine coroutineSlide;
     private CharacterController characterController;
     private float verticalPosition;
     private int lane; 
     private Vector3 desiredDirection;
+
+    private float controllerRadius;
+    private float controllerHeight;
+    private float controllerPositionY;
 
     void Awake()
     {
@@ -31,7 +40,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        controllerRadius = characterController.radius;
+        controllerHeight = characterController.height;
+        controllerPositionY = characterController.center.y;
     }
 
     // Update is called once per frame
@@ -53,12 +64,41 @@ public class PlayerController : MonoBehaviour
     {
         if(characterController.isGrounded)
         {
+            isJumping = false;
             verticalPosition = 0f;
-        }
+            if(directionInput == DirectionInput.Up)
+            {
+                verticalPosition = jumpForce;
+                isJumping = true;
+                if(coroutineSlide != null)
+                {
+                    StopCoroutine(coroutineSlide);
+                    isSliding = false;
+                    ModifyColliderSlide(false);
+                }
+            }
+            if (directionInput == DirectionInput.Down)
+            {
+                if(isSliding)
+                {
+                    return;
+                }
 
-        if(directionInput == DirectionInput.Up)
-        {
-            //salto
+                if(coroutineSlide != null)
+                {
+                    StopCoroutine(coroutineSlide);
+                }
+
+                Slide();
+            }
+            else
+            {
+                if(directionInput == DirectionInput.Down)
+                {
+                    verticalPosition -= jumpForce;
+                    Slide();
+                }
+            }
         }
 
         verticalPosition -= gravity * Time.deltaTime;
@@ -118,6 +158,36 @@ public class PlayerController : MonoBehaviour
         {
             desiredDirection = Vector3.zero;
             transform.position = new Vector3 (posX, transform.position.y, transform.position.z);
+        }
+    }
+
+    private void Slide()
+    {
+        coroutineSlide = StartCoroutine(COSlide());
+    }
+
+    private IEnumerator COSlide()
+    {
+        isSliding = true;
+        ModifyColliderSlide(true);
+        yield return new WaitForSeconds(2f);
+        isSliding = false; 
+        ModifyColliderSlide(false);
+    }
+
+    private void ModifyColliderSlide (bool modify)
+    {
+        if(modify)
+        {
+            characterController.radius = 0.3f;
+            characterController.height = 0.6f;
+            characterController.center = new Vector3 (0f, 0.35f, 0f);
+        }
+        else
+        {
+            characterController.radius = controllerRadius;
+            characterController.height = controllerHeight;
+            characterController.center = new Vector3 (0f, controllerPositionY, 0f);
         }
     }
 
