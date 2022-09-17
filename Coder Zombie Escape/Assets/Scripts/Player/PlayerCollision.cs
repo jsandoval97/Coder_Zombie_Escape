@@ -7,8 +7,12 @@ public class PlayerCollision : MonoBehaviour
 {
 
     private PlayerData playerData;
+    private PlayerAnimation playerAnimation; 
 
-
+    void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -19,18 +23,24 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        
+
+
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit) 
+    {
+        if (hit.collider.CompareTag("Obstacle"))
         {
-            Debug.Log("Zombie aparece");
+            Debug.Log("Perder una vida");
+            playerAnimation.showAnimationHit();
             HUDManager.Instance.RestarVida();
         }
 
         else
         {
-            Debug.Log("Entrando en colisión con -> " + other.gameObject.name);
+            Debug.Log("Entrando en colisión con -> " + hit.gameObject.name);
         }
-
-
     }
 
     private void OnTriggerExit(Collider other)

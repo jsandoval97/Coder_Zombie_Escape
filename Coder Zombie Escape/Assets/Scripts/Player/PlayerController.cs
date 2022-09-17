@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private DirectionInput directionInput;
     private Coroutine coroutineSlide;
     private CharacterController characterController;
+    private PlayerAnimation playerAnimation; 
     private float verticalPosition;
     private int lane; 
     private Vector3 desiredDirection;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        playerAnimation = GetComponent<PlayerAnimation>();
     }
     // Start is called before the first frame update
     void Start()
@@ -66,10 +68,17 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
             verticalPosition = 0f;
+
+            if (!isSliding && !isJumping)
+            {
+                playerAnimation.showAnimationRun();
+            }
+
             if(directionInput == DirectionInput.Up)
             {
                 verticalPosition = jumpForce;
                 isJumping = true;
+                playerAnimation.showAnimationJump();
                 if(coroutineSlide != null)
                 {
                     StopCoroutine(coroutineSlide);
@@ -169,6 +178,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator COSlide()
     {
         isSliding = true;
+        playerAnimation.showAnimationSlide();
         ModifyColliderSlide(true);
         yield return new WaitForSeconds(2f);
         isSliding = false; 
@@ -181,7 +191,7 @@ public class PlayerController : MonoBehaviour
         {
             characterController.radius = 0.3f;
             characterController.height = 0.6f;
-            characterController.center = new Vector3 (0f, 0.35f, 0f);
+            characterController.center = new Vector3 (0f, 0f, 0f);
         }
         else
         {
