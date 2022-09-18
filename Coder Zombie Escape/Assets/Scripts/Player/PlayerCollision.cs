@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System; 
 
 public class PlayerCollision : MonoBehaviour
 {
 
     private PlayerData playerData;
     private PlayerAnimation playerAnimation; 
+    public static event Action OnDead;
+
 
     void Awake()
     {
@@ -32,14 +35,16 @@ public class PlayerCollision : MonoBehaviour
     {
         if (hit.collider.CompareTag("Obstacle"))
         {
-            Debug.Log("Perder una vida");
+            Debug.Log("GameOver");
             playerAnimation.showAnimationHit();
             HUDManager.Instance.RestarVida();
+            PlayerCollision.OnDead?.Invoke();
+            
         }
 
         else
         {
-            Debug.Log("Entrando en colisión con -> " + hit.gameObject.name);
+            //Debug.Log("Entrando en colisión con -> " + hit.gameObject.name);
         }
     }
 

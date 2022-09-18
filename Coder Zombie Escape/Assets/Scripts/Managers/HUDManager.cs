@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     public static HUDManager Instance { get => instance; }
 
     [SerializeField] private Slider progressBar;
+    [SerializeField] private GameObject gameOverPanel;
 
     [SerializeField] private Text Coins;
 
@@ -24,6 +25,7 @@ public class HUDManager : MonoBehaviour
         {
             instance = this;
             Debug.Log(instance);
+            PlayerCollision.OnDead += GameOver;
         }
         else
         {
@@ -59,6 +61,17 @@ public class HUDManager : MonoBehaviour
     {
         lives = -1;
         Lives.text = "Lives " + lives;
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Respuesta desde otro script");
+        gameOverPanel.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        PlayerCollision.OnDead -= GameOver;
     }
 
 }
