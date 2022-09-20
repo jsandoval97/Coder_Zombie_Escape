@@ -7,5 +7,5 @@ public class Points : MonoBehaviour
     [SerializeField]
     [Range(1, 10)]
     private int points = 1;
-    public int urnPoints { get { return points; } }
+    public int Point { get { return points; } }
 }

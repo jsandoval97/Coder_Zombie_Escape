@@ -10,6 +10,7 @@ public class PlayerCollision : MonoBehaviour
     private PlayerData playerData;
     private PlayerAnimation playerAnimation; 
     public static event Action OnDead;
+    public static event Action<int> OnChangePoints;
 
 
     void Awake()
@@ -63,11 +64,12 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Points"))
         {
             Destroy(other.gameObject);
-            playerData.Punctuation(other.gameObject.GetComponent<Points>().urnPoints);
 
             GameManager.score++;
             Debug.Log(GameManager.score);
-            HUDManager.Instance.AddPoint();
+            PlayerCollision.OnChangePoints?.Invoke(playerData.Score);
+            playerData.AddPoint(other.gameObject.GetComponent<Points>().Point);
+            //HUDManager.SetScore(playerData.Score);
         }
     }
     

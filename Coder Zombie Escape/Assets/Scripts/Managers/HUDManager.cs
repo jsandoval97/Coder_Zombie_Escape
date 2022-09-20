@@ -9,6 +9,7 @@ public class HUDManager : MonoBehaviour
     private static HUDManager instance;
     public static HUDManager Instance { get => instance; }
 
+
     [SerializeField] private Slider progressBar;
     [SerializeField] private GameObject gameOverPanel;
 
@@ -26,6 +27,8 @@ public class HUDManager : MonoBehaviour
             instance = this;
             Debug.Log(instance);
             PlayerCollision.OnDead += GameOver;
+            PlayerCollision.OnChangePoints += SetScore;
+            
         }
         else
         {
@@ -36,7 +39,7 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Coins.text = "Coins " + score;
+        
         Lives.text = "Lives " + lives;
     }
 
@@ -51,10 +54,18 @@ public class HUDManager : MonoBehaviour
         instance.progressBar.value = newValue;
     }
 
-    public void AddPoint()
+    /*public void AddPoint()
     {
         score += 1;
         Coins.text = "Coins " + score;
+    }*/
+
+    public static void SetScore(int newValue)
+    {
+        
+        instance.score = newValue; 
+        instance.Coins.text = "Coins " + instance.score;
+        Debug.Log("Respuesta desde el HUDManager");
     }
 
     public void RestarVida()
@@ -65,7 +76,7 @@ public class HUDManager : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Respuesta desde otro script");
+        Debug.Log("Respuesta desde el HUDManager");
         gameOverPanel.SetActive(true);
     }
 
