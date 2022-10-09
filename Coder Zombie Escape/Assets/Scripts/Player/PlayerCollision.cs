@@ -38,6 +38,7 @@ public class PlayerCollision : MonoBehaviour
         {
             Debug.Log("GameOver");
             playerAnimation.showAnimationHit();
+            GameManager.instance.ChangeState(GameStates.GameOver);
             HUDManager.Instance.RestarVida();
             PlayerCollision.OnDead?.Invoke();
             
