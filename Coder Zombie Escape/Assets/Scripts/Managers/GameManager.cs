@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ChangeState(GameStates.Playing);
+            HUDManager.Instance.StartGame();
         }
     }
 

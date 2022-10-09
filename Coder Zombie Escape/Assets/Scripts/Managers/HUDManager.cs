@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] private Slider progressBar;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject startingPanel;
 
     [SerializeField] private Text Coins;
 
@@ -83,6 +84,11 @@ public class HUDManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerCollision.OnDead -= GameOver;
+    }
+
+    public void StartGame()
+    {
+        startingPanel.SetActive(false);
     }
 
 }

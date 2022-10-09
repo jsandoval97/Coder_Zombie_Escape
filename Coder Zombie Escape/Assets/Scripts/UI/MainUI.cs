@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour
 {
+    [SerializeField] private GameObject creditsPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,20 @@ public class MainUI : MonoBehaviour
 
     public void OnClickSurvival()
     {
-        Debug.Log("Se presionó botón Story mode");
+        Debug.Log("Se presionó botón Survival mode");
         SceneManager.LoadScene("SurvivalMode");
+    }
+
+    public void OnClickExit()
+    {
+        Debug.Log("Se presionó el botón para cerrar los créditos");
+        creditsPanel.SetActive(false);
+
+    }
+
+    public void OnClickCredits()
+    {
+        Debug.Log("Se presionó el botón para acceder a los créditos");
+        creditsPanel.SetActive(true);
     }
 }
