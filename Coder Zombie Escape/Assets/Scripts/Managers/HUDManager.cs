@@ -13,6 +13,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Slider progressBar;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject startingPanel;
+    [SerializeField] private GameObject winPanel;
 
     [SerializeField] private Text Coins;
 
@@ -29,6 +30,7 @@ public class HUDManager : MonoBehaviour
             Debug.Log(instance);
             PlayerCollision.OnDead += GameOver;
             PlayerCollision.OnChangePoints += SetScore;
+            PlayerCollision.OnWin += YouWin;
             
         }
         else
@@ -89,6 +91,11 @@ public class HUDManager : MonoBehaviour
     public void StartGame()
     {
         startingPanel.SetActive(false);
+    }
+
+    private void YouWin()
+    {
+        winPanel.SetActive(true);
     }
 
 }

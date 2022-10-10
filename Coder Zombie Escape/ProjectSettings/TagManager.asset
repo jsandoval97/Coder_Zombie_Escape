@@ -8,6 +8,7 @@ TagManager:
   - Points
   - SpeedUp
   - CheckPoint
+  - EndPoint
   layers:
   - Default
   - TransparentFX

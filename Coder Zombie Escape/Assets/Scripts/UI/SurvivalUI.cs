@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SurvivalUI : MonoBehaviour
 {
@@ -15,4 +18,17 @@ public class SurvivalUI : MonoBehaviour
     {
         
     }
+
+    public void OnClickRestart()
+    {
+        Debug.Log("Se presionó botón Restart");
+        SceneManager.LoadScene("SurvivalMode");
+    }
+
+    public void OnClickMain()
+    {
+        Debug.Log("Se presionó botón Main Menu");
+        SceneManager.LoadScene("Main");
+    }
+
 }

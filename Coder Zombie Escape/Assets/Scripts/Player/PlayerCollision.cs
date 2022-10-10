@@ -10,6 +10,7 @@ public class PlayerCollision : MonoBehaviour
     private PlayerData playerData;
     private PlayerAnimation playerAnimation; 
     public static event Action OnDead;
+    public static event Action OnWin;
     public static event Action<int> OnChangePoints;
 
 
@@ -44,11 +45,10 @@ public class PlayerCollision : MonoBehaviour
             
         }
 
-        else
-        {
-            //Debug.Log("Entrando en colisión con -> " + hit.gameObject.name);
-        }
+        
+
     }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -71,6 +71,14 @@ public class PlayerCollision : MonoBehaviour
             PlayerCollision.OnChangePoints?.Invoke(playerData.Score);
             playerData.AddPoint(other.gameObject.GetComponent<Points>().Point);
             //HUDManager.SetScore(playerData.Score);
+        }
+        if (other.gameObject.CompareTag("EndPoint"))
+        {
+            Debug.Log("Fin del nivel");
+            playerAnimation.showAnimationWin();
+            GameManager.instance.ChangeState(GameStates.Starting);
+            PlayerCollision.OnWin?.Invoke();
+            
         }
     }
     

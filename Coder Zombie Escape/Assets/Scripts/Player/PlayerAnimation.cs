@@ -51,4 +51,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         changeAnimation("Hit");
     }
+
+    public void showAnimationWin()
+    {
+        changeAnimation("Victory");
+    }
 }
